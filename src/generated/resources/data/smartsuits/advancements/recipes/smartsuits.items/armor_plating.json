@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "smartsuits:armor_plating"
+    ]
+  },
+  "criteria": {
+    "has_integrating_circuit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "smartsuits:integrating_circuit"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "smartsuits:armor_plating"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_integrating_circuit",
+      "has_the_recipe"
+    ]
+  ]
+}

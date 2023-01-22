@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DCD",
+    "DED",
+    "BAB"
+  ],
+  "key": {
+    "A": {
+      "item": "smartsuits:smart_crystal"
+    },
+    "B": {
+      "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "smartsuits:carbon_mesh"
+    },
+    "D": {
+      "item": "smartsuits:carbon_plate"
+    },
+    "E": {
+      "item": "smartsuits:smart_suit_helmet_plating"
+    }
+  },
+  "result": {
+    "item": "smartsuits:smart_suit_helmet"
+  }
+}

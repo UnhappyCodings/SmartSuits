@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "smartsuits:carbon_mesh"
+    ]
+  },
+  "criteria": {
+    "has_carbon_pellets": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "smartsuits:carbon_pellets"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "smartsuits:carbon_mesh"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_carbon_pellets",
+      "has_the_recipe"
+    ]
+  ]
+}

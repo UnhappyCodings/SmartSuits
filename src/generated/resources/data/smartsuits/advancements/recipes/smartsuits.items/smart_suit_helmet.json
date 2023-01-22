@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "smartsuits:smart_suit_helmet"
+    ]
+  },
+  "criteria": {
+    "has_smart_suit_helmet_plating": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "smartsuits:smart_suit_helmet_plating"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "smartsuits:smart_suit_helmet"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_smart_suit_helmet_plating",
+      "has_the_recipe"
+    ]
+  ]
+}

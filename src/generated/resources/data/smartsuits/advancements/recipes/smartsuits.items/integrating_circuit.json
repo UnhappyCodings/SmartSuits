@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "smartsuits:integrating_circuit"
+    ]
+  },
+  "criteria": {
+    "has_smart_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "smartsuits:smart_crystal"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "smartsuits:integrating_circuit"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_smart_crystal",
+      "has_the_recipe"
+    ]
+  ]
+}

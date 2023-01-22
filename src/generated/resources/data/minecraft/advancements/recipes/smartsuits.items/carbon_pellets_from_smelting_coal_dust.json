@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:carbon_pellets_from_smelting_coal_dust"
+    ]
+  },
+  "criteria": {
+    "has_coal_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "smartsuits:coal_dust"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:carbon_pellets_from_smelting_coal_dust"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_coal_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

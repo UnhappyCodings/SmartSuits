@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BAB",
+    "CEC",
+    "BDB"
+  ],
+  "key": {
+    "A": {
+      "item": "smartsuits:smart_crystal"
+    },
+    "B": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "C": {
+      "item": "minecraft:redstone"
+    },
+    "D": {
+      "item": "minecraft:green_dye"
+    },
+    "E": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "result": {
+    "item": "smartsuits:integrating_circuit"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "smartsuits:item/smart_suit_helmet_plating"
+  }
+}

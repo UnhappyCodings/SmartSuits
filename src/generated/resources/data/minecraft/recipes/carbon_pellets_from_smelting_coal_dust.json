@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "carbon_pellets",
+  "ingredient": {
+    "item": "smartsuits:coal_dust"
+  },
+  "result": "smartsuits:carbon_pellets",
+  "experience": 0.4,
+  "cookingtime": 200
+}

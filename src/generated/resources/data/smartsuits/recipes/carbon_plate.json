@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "smartsuits:hammer"
+    },
+    {
+      "item": "smartsuits:carbon_mesh"
+    }
+  ],
+  "result": {
+    "item": "smartsuits:carbon_plate"
+  }
+}

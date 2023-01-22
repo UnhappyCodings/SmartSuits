@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EBE",
+    "CDC",
+    "EAE"
+  ],
+  "key": {
+    "A": {
+      "item": "smartsuits:smart_crystal"
+    },
+    "B": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "C": {
+      "item": "minecraft:redstone"
+    },
+    "D": {
+      "item": "smartsuits:integrating_circuit"
+    },
+    "E": {
+      "item": "smartsuits:iron_plate"
+    }
+  },
+  "result": {
+    "item": "smartsuits:armor_plating"
+  }
+}
