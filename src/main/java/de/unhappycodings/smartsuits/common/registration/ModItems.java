@@ -1,6 +1,8 @@
-package de.unhappycodings.smartsuits.common.item;
+package de.unhappycodings.smartsuits.common.registration;
 
 import de.unhappycodings.smartsuits.SmartSuits;
+import de.unhappycodings.smartsuits.common.item.HammerItem;
+import de.unhappycodings.smartsuits.common.item.SmartSuitArmorItem;
 import de.unhappycodings.smartsuits.common.material.ModArmorMaterials;
 import de.unhappycodings.smartsuits.common.registration.Registration;
 import net.minecraft.world.entity.EquipmentSlot;

@@ -2,12 +2,15 @@ package de.unhappycodings.smartsuits;
 
 import com.mojang.logging.LogUtils;
 import de.unhappycodings.smartsuits.common.ItemCreativeTab;
-import de.unhappycodings.smartsuits.common.item.ModItems;
+import de.unhappycodings.smartsuits.common.network.PacketHandler;
+import de.unhappycodings.smartsuits.common.registration.ModContainerTypes;
+import de.unhappycodings.smartsuits.common.registration.ModItems;
 import de.unhappycodings.smartsuits.common.registration.Registration;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
@@ -28,8 +31,14 @@ public class SmartSuits {
 
         Registration.register();
         ModItems.register();
+        ModContainerTypes.register();
 
         MinecraftForge.EVENT_BUS.register(this);
+        bus.addListener(this::onCommonSetup);
+    }
+
+    public void onCommonSetup(FMLCommonSetupEvent event) {
+        event.enqueueWork(PacketHandler::init);
     }
 
 }

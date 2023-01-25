@@ -1,7 +1,7 @@
 package de.unhappycodings.smartsuits.common.data;
 
 import de.unhappycodings.smartsuits.SmartSuits;
-import de.unhappycodings.smartsuits.common.item.ModItems;
+import de.unhappycodings.smartsuits.common.registration.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;

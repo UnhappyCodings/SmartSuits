@@ -1,7 +1,7 @@
 package de.unhappycodings.smartsuits.common;
 
 import de.unhappycodings.smartsuits.SmartSuits;
-import de.unhappycodings.smartsuits.common.item.ModItems;
+import de.unhappycodings.smartsuits.common.registration.ModItems;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;

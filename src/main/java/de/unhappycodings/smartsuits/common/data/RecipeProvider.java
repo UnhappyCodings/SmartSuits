@@ -1,7 +1,7 @@
 package de.unhappycodings.smartsuits.common.data;
 
 import com.google.common.collect.ImmutableList;
-import de.unhappycodings.smartsuits.common.item.ModItems;
+import de.unhappycodings.smartsuits.common.registration.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
