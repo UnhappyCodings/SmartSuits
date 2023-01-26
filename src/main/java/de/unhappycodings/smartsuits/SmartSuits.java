@@ -6,6 +6,7 @@ import de.unhappycodings.smartsuits.common.network.PacketHandler;
 import de.unhappycodings.smartsuits.common.registration.ModContainerTypes;
 import de.unhappycodings.smartsuits.common.registration.ModItems;
 import de.unhappycodings.smartsuits.common.registration.Registration;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -18,6 +19,8 @@ import java.util.Random;
 
 @Mod(SmartSuits.MOD_ID)
 public class SmartSuits {
+    public static final ResourceLocation BLANK = new ResourceLocation(SmartSuits.MOD_ID, "textures/gui/overlay/blank.png");
+    public static final ResourceLocation GHOST_OVERLAY = new ResourceLocation(SmartSuits.MOD_ID, "textures/gui/overlay/ghost.png");
 
     public static final Random RANDOM = new Random();
     public static final String MOD_ID = "smartsuits";

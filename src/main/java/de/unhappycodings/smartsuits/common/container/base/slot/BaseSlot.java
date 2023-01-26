@@ -13,8 +13,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Predicate;
 
 public class BaseSlot extends SlotItemHandler {
-    public static final ResourceLocation GHOST_OVERLAY = new ResourceLocation(SmartSuits.MOD_ID, "textures/gui/slot/ghost_overlay.png");
-
     public final BaseContainer container;
     public final Inventory inventory;
     public final Predicate<ItemStack> canPlace;

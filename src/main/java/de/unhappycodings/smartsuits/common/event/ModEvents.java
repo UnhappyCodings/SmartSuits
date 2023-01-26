@@ -17,17 +17,17 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onEditorKeybindPressEvent(InputEvent.KeyInputEvent event) {
-        if (event.getKey() == ModKeyBindings.OPEN_EDITOR.getKey().getValue()) {
-            System.out.println("keyboard");
-            PacketHandler.sendToServer(new SmartSuitEditorOpenPacket());
-
-        }
+        tryOpenGui(event.getKey());
     }
 
     @SubscribeEvent
     public static void onEditorKeybindPressEvent(InputEvent.MouseInputEvent event) {
-        if (event.getButton() == ModKeyBindings.OPEN_EDITOR.getKey().getValue()) {
-            System.out.println("mouse");
+        tryOpenGui(event.getButton());
+    }
+
+    public static void tryOpenGui(int button) {
+        if (button == ModKeyBindings.OPEN_EDITOR.getKey().getValue()) {
+            PacketHandler.sendToServer(new SmartSuitEditorOpenPacket());
         }
     }
 

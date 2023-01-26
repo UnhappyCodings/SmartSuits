@@ -28,7 +28,7 @@ public abstract class BaseContainer extends AbstractContainerMenu {
     private final IItemHandler inventory;
     protected Player player;
 
-    protected BaseContainer(@Nullable MenuType<?> type, int id, Inventory inventory, BlockPos pos, Level world, int slotCount) {
+    protected BaseContainer(@Nullable MenuType<?> type, int id, Inventory inventory, Level world, int slotCount) {
         super(type, id);
         this.inventory = new InvWrapper(inventory);
         this.TE_INVENTORY_SLOT_COUNT = slotCount;
