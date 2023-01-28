@@ -85,4 +85,7 @@ public abstract class BaseContainer extends AbstractContainerMenu {
         addSlotRange(inventory, 0, leftCol, topRow, 9, 18);
     }
 
+    public IItemHandler getInventory() {
+        return inventory;
+    }
 }
