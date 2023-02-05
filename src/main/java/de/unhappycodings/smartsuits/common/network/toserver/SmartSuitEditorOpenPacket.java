@@ -30,11 +30,8 @@ public class SmartSuitEditorOpenPacket implements IPacket {
     @SuppressWarnings("ConstantConditions")
     public void handle(NetworkEvent.Context context) {
         ServerPlayer player = context.getSender();
-
         if (player.getInventory() != null) {
-
-        NetworkHooks.openGui(player, new SimpleMenuProvider((w, p, pl) ->
-                new SmartSuitEditorContainer(w, p, player.getLevel(), 13), new TextComponent("")), uf -> {});
+            NetworkHooks.openGui(player, new SimpleMenuProvider((w, p, pl) -> new SmartSuitEditorContainer(w, p, player.getLevel(), 13), new TextComponent("")), uf -> {});
 
         }
     }

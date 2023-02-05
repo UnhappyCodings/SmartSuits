@@ -13,16 +13,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Predicate;
 
 public class BaseSlot extends SlotItemHandler {
-    public final BaseContainer container;
-    public final Inventory inventory;
     public final Predicate<ItemStack> canPlace;
     public boolean isEnabled = true;
 
-    public BaseSlot(BaseContainer container, IItemHandler itemHandler, Inventory inventory, int index, int xPosition, int yPosition, Predicate<ItemStack> canPlace) {
+    public BaseSlot(IItemHandler itemHandler, int index, int xPosition, int yPosition, Predicate<ItemStack> canPlace) {
         super(itemHandler, index, xPosition, yPosition);
-        this.inventory = inventory;
         this.canPlace = canPlace;
-        this.container = container;
     }
 
     @Override
@@ -31,18 +27,13 @@ public class BaseSlot extends SlotItemHandler {
         return canPlace.test(stack);
     }
 
-    public void setEnabled(boolean enable) {
+    public void setActive(boolean enable) {
         this.isEnabled = enable;
     }
 
     @Override
     public boolean isActive() {
         return isEnabled;
-    }
-
-    @Override
-    public void setChanged() {
-        if (inventory != null) inventory.setChanged();
     }
 
 }

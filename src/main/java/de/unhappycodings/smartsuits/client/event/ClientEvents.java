@@ -1,4 +1,4 @@
-package de.unhappycodings.smartsuits.client;
+package de.unhappycodings.smartsuits.client.event;
 
 import de.unhappycodings.smartsuits.SmartSuits;
 import de.unhappycodings.smartsuits.common.container.SmartSuitEditorScreen;

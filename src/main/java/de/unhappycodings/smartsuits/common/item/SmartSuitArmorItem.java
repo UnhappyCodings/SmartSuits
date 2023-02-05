@@ -5,8 +5,11 @@ import de.unhappycodings.smartsuits.common.container.capability.SmartSuitEditorI
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -29,50 +32,22 @@ import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class SmartSuitArmorItem extends ArmorItem {
-    private final int upgradeSlotCount;
-    private final LazyOptional<EnergyStorage> lazyEnergyHandler = LazyOptional.empty();
-    public NonNullList<ItemStack> items;
+public class SmartSuitArmorItem extends CapabilityNbtArmorItem {
 
     public SmartSuitArmorItem(ArmorMaterial pMaterial, EquipmentSlot pSlot, Properties pProperties, int upgradeSlotCount) {
-        super(pMaterial, pSlot, pProperties);
-        this.upgradeSlotCount = upgradeSlotCount;
+        super((stack, tag) -> {
+            return new ICapabilityProvider() {
+                @Override
+                public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+                    return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.orEmpty(cap, LazyOptional.of(() -> new ItemStackHandler(upgradeSlotCount)));
+                }
+            };
+        }, pMaterial, pSlot, pProperties, upgradeSlotCount);
     }
 
     @Nullable
     @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
-        return new SmartSuitEditorCapabilityProvider(3);
+    public SoundEvent getEquipSound() {
+        return SoundEvents.ARMOR_EQUIP_NETHERITE;
     }
-
-    @Override
-    public float getToughness() {
-        return 0;
-    }
-
-    @Override
-    public int getDefense() {
-        return super.getDefense();
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return super.getEnchantmentValue();
-    }
-
-    @Override
-    public int getItemEnchantability(ItemStack stack) {
-        return 0;
-    }
-
-    @Override
-    public boolean canElytraFly(ItemStack stack, LivingEntity entity) {
-        return true;
-    }
-
-    @Override
-    public boolean elytraFlightTick(ItemStack stack, LivingEntity entity, int flightTicks) {
-        return true;
-    }
-
 }

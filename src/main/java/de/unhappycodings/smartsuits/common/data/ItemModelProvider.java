@@ -38,6 +38,7 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
         simpleItem(ModItems.SMART_SUIT_BOOTS_PLATING.get());
         simpleItem(ModItems.INTEGRATING_CIRCUIT.get());
         simpleItem(ModItems.SMART_CRYSTAL.get());
+
     }
 
     private void simpleItem(Item item) {

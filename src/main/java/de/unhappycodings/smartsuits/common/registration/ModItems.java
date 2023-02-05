@@ -2,6 +2,7 @@ package de.unhappycodings.smartsuits.common.registration;
 
 import de.unhappycodings.smartsuits.SmartSuits;
 import de.unhappycodings.smartsuits.common.item.HammerItem;
+import de.unhappycodings.smartsuits.common.item.ModuleItem;
 import de.unhappycodings.smartsuits.common.item.SmartSuitArmorItem;
 import de.unhappycodings.smartsuits.common.material.ModArmorMaterials;
 import de.unhappycodings.smartsuits.common.registration.Registration;
@@ -39,8 +40,10 @@ public class ModItems {
     public static final RegistryObject<Item> IRON_PLATE = Registration.ITEMS.register("iron_plate", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab)));
 
     public static final RegistryObject<Item> ARMOR_PLATING = Registration.ITEMS.register("armor_plating", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab)));
-   public static final RegistryObject<Item> INTEGRATING_CIRCUIT = Registration.ITEMS.register("integrating_circuit", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab)));
+    public static final RegistryObject<Item> INTEGRATING_CIRCUIT = Registration.ITEMS.register("integrating_circuit", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab)));
     public static final RegistryObject<Item> SMART_CRYSTAL = Registration.ITEMS.register("smart_crystal", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab)));
+
+    public static final RegistryObject<Item> TEST_MODULE = Registration.ITEMS.register("test_module", ModuleItem::new);
 
     public static void register() {
     }

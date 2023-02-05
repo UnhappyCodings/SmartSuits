@@ -3,27 +3,34 @@ package de.unhappycodings.smartsuits.common.container;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import de.unhappycodings.smartsuits.SmartSuits;
+import de.unhappycodings.smartsuits.client.config.ClientConfig;
+import de.unhappycodings.smartsuits.client.gui.widgets.ModButton;
 import de.unhappycodings.smartsuits.common.container.base.screen.BaseScreen;
 import de.unhappycodings.smartsuits.common.enums.SuitTypeEnum;
+import de.unhappycodings.smartsuits.common.enums.SuitTypeItemEnum;
 import de.unhappycodings.smartsuits.common.registration.ModItems;
-import de.unhappycodings.smartsuits.common.util.GuiUtil;
+import de.unhappycodings.smartsuits.common.util.EnumUtil;
 import de.unhappycodings.smartsuits.common.util.RenderUtil;
-import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 public class SmartSuitEditorScreen extends BaseScreen<SmartSuitEditorContainer> {
-    SmartSuitEditorContainer container;
-    private SuitTypeEnum selection = SuitTypeEnum.HELMET;
+    private final SmartSuitEditorContainer container;
+    public SuitTypeItemEnum selection;
 
     public SmartSuitEditorScreen(SmartSuitEditorContainer screenContainer, Inventory inv, Component titleIn) {
         super(screenContainer, inv, titleIn);
         this.container = screenContainer;
+        this.selection = EnumUtil.getItemEnum(ClientConfig.smartSuitEditorSelection.get());
     }
 
     @Override
@@ -35,15 +42,12 @@ public class SmartSuitEditorScreen extends BaseScreen<SmartSuitEditorContainer> 
         RenderUtil.drawCenteredText(new TextComponent("Settings").getString(), pPoseStack, getSizeX() / 2, 117);
         RenderUtil.drawText(new TextComponent("Inventory").getString(), pPoseStack, 8, 152);
         RenderUtil.drawCenteredText(new TextComponent("Preview").getText(), pPoseStack, -50, 21, 16777215);
-
-        // Helmet Slots
-        blit(pPoseStack, 59, 51, 238, 18, 18, 18);
-
     }
 
     @Override
     protected void renderBg(@NotNull PoseStack matrixStack, float partialTicks, int x, int y) {
         super.renderBg(matrixStack, partialTicks, x, y);
+        this.selection = EnumUtil.getItemEnum(ClientConfig.smartSuitEditorSelection.get());
 
         // Left Preview Window
         blit(matrixStack, getGuiLeft() - 5, getGuiTop() + 11, 251, 107, 5, 149);
@@ -53,22 +57,61 @@ public class SmartSuitEditorScreen extends BaseScreen<SmartSuitEditorContainer> 
         // Right Settings
         blit(matrixStack, getGuiLeft() + 176, getGuiTop() + 11, 214, 156, 21, 21);
 
-        // Items
-        renderArmorPiece(matrixStack, new ItemStack(selection.getItem()), getGuiLeft() + 57, getGuiTop() + 48, false);
+        // Armor Piece
+        renderArmorPiece(matrixStack, new ItemStack(selection.getItem()), getGuiLeft() + 57, getGuiTop() + 48,
+                this.getMinecraft().player.getItemBySlot(EnumUtil.getEquipSlot(selection)).is(selection.getItem()));
+
+        // Reset Rendering
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, getTexture());
+        RenderSystem.disableDepthTest();
+
+        // Slots
+        renderModuleSlots(matrixStack);
 
         // Player In Preview
         InventoryScreen.renderEntityInInventory(getGuiLeft() - 50, getGuiTop() + 145, 55, 0, 0, getMinecraft().player);
 
     }
 
+    public void renderModuleSlots(PoseStack matrixStack) {
+        int offset = this.getMinecraft().player.getItemBySlot(EnumUtil.getEquipSlot(selection)).is(selection.getItem()) ? 0 : 18;
+        switch (selection) {
+            case HELMET -> {
+                blit(matrixStack, getGuiLeft() + 60, getGuiTop() + 71, 238, offset, 18, 18);
+                blit(matrixStack, getGuiLeft() + 80, getGuiTop() + 56, 238, offset, 18, 18);
+                blit(matrixStack, getGuiLeft() + 100, getGuiTop() + 71, 238, offset, 18, 18);
+            }
+            case CHESTPLATE -> {
+                blit(matrixStack, getGuiLeft() + 59, getGuiTop() + 54, 238, offset, 18, 18);
+                blit(matrixStack, getGuiLeft() + 102, getGuiTop() + 54, 238, offset, 18, 18);
+                blit(matrixStack, getGuiLeft() + 80, getGuiTop() + 74, 238, offset, 18, 18);
+                blit(matrixStack, getGuiLeft() + 80, getGuiTop() + 95, 238, offset, 18, 18);
+            }
+            case LEGGINGS, BOOTS -> {
+                blit(matrixStack, getGuiLeft() + 64, getGuiTop() + 74, 238, offset, 18, 18);
+                blit(matrixStack, getGuiLeft() + 80, getGuiTop() + 53, 238, offset, 18, 18);
+                blit(matrixStack, getGuiLeft() + 96, getGuiTop() + 74, 238, offset, 18, 18);
+            }
+        }
+    }
+
     @Override
     protected void init() {
-        addButtons();
         super.init();
+        addButtons();
     }
 
     protected void addButtons() {
+        addRenderableWidget(new ModButton(9, 43, 20, 20, SmartSuits.HELMET_NORMAL, () -> setSelection(SuitTypeEnum.HELMET), this, 20, 40, true));
+        addRenderableWidget(new ModButton(9, 70, 20, 20, SmartSuits.CHESTPLATE_NORMAL, () -> setSelection(SuitTypeEnum.CHESTPLATE), this, 20, 40, true));
+        addRenderableWidget(new ModButton(9, 97, 20, 20, SmartSuits.LEGGINGS_NORMAL, () -> setSelection(SuitTypeEnum.LEGGINGS), this, 20, 40, true));
+        addRenderableWidget(new ModButton(9, 124, 20, 20, SmartSuits.BOOTS_NORMAL, () -> setSelection(SuitTypeEnum.BOOTS), this, 20, 40, true));
+    }
 
+    private void setSelection(SuitTypeEnum selection) {
+        ClientConfig.smartSuitEditorSelection.set(selection);
     }
 
     public void renderArmorPiece(PoseStack stack, ItemStack item, int x, int y, boolean normal) {
@@ -78,10 +121,10 @@ public class SmartSuitEditorScreen extends BaseScreen<SmartSuitEditorContainer> 
         RenderSystem.setShaderColor(1, 1, 1, 0.65f);
         RenderSystem.enableBlend();
         RenderSystem.disableDepthTest();
-        GuiComponent.blit(stack, x, y, 0, 0, 64, 64, 16, 16);
+        blit(stack, x, y, 0, 0, 64, 64, 16, 16);
         RenderSystem.disableBlend();
         RenderSystem.enableDepthTest();
-        GuiUtil.reset();
+        RenderSystem.setShaderColor(1, 1, 1, 1f);
         stack.popPose();
     }
 
