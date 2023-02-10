@@ -39,6 +39,10 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
         simpleItem(ModItems.INTEGRATING_CIRCUIT.get());
         simpleItem(ModItems.SMART_CRYSTAL.get());
 
+        simpleItem(ModItems.EMPTY_MODULE.get());
+        simpleItem(ModItems.MAGNET_MODULE.get());
+        simpleItem(ModItems.NIGHT_VISION_MODULE.get());
+
     }
 
     private void simpleItem(Item item) {

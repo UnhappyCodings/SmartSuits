@@ -60,7 +60,6 @@ public class SmartSuitEditorContainer extends BaseContainer {
             addSlot(helmetModule3);
         });
         player.getItemBySlot(EquipmentSlot.CHEST).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-
             chestplateModule1 = new BaseSlot(handler, 0, 60, 55, stack -> stack.getItem() instanceof ModuleItem);
             chestplateModule2 = new BaseSlot(handler, 1, 103, 55, stack -> stack.getItem() instanceof ModuleItem);
             chestplateModule3 = new BaseSlot(handler, 2, 81, 75, stack -> stack.getItem() instanceof ModuleItem);
@@ -97,8 +96,17 @@ public class SmartSuitEditorContainer extends BaseContainer {
         ItemStack playerLeggings = this.player.getItemBySlot(EquipmentSlot.LEGS);
         ItemStack playerBoots = this.player.getItemBySlot(EquipmentSlot.FEET);
 
-        if (selection == SuitTypeItemEnum.HELMET && playerHelmet.getOrCreateTag().contains("Modules")) {
+        if (playerHelmet.getOrCreateTag().contains("Modules")) {
             rolloutModulesFromItemNbt(playerHelmet, new BaseSlot[]{helmetModule1, helmetModule2, helmetModule3});
+        }
+        if (playerChestplate.getOrCreateTag().contains("Modules")) {
+            rolloutModulesFromItemNbt(playerChestplate, new BaseSlot[]{chestplateModule1, chestplateModule2, chestplateModule3, chestplateModule4});
+        }
+        if (playerLeggings.getOrCreateTag().contains("Modules")) {
+            rolloutModulesFromItemNbt(playerLeggings, new BaseSlot[]{leggingsModule1, leggingsModule2, leggingsModule3});
+        }
+        if (playerBoots.getOrCreateTag().contains("Modules")) {
+            rolloutModulesFromItemNbt(playerBoots, new BaseSlot[]{bootsModule1, bootsModule2, bootsModule3});
         }
 
     }

@@ -43,7 +43,9 @@ public class ModItems {
     public static final RegistryObject<Item> INTEGRATING_CIRCUIT = Registration.ITEMS.register("integrating_circuit", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab)));
     public static final RegistryObject<Item> SMART_CRYSTAL = Registration.ITEMS.register("smart_crystal", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab)));
 
-    public static final RegistryObject<Item> TEST_MODULE = Registration.ITEMS.register("test_module", ModuleItem::new);
+    public static final RegistryObject<Item> MAGNET_MODULE = Registration.ITEMS.register("magnet_module", ModuleItem::new);
+    public static final RegistryObject<Item> NIGHT_VISION_MODULE = Registration.ITEMS.register("night_vision_module", ModuleItem::new);
+    public static final RegistryObject<Item> EMPTY_MODULE = Registration.ITEMS.register("empty_module", ModuleItem::new);
 
     public static void register() {
     }
