@@ -1,11 +1,15 @@
 {
-  "item.smartsuits.armor_plating": "Armor Plating",
+  "item.smartsuits.armor_plating": "Armor Baseplate",
   "item.smartsuits.carbon_mesh": "Carbon Mesh",
   "item.smartsuits.carbon_pellets": "Carbon Pellets",
   "item.smartsuits.carbon_plate": "Carbon Plate",
   "item.smartsuits.coal_dust": "Coal Dust",
+  "item.smartsuits.empty_module": "Empty Module",
+  "item.smartsuits.hammer": "Hammer",
   "item.smartsuits.integrating_circuit": "Integrating Circuit",
   "item.smartsuits.iron_plate": "Iron Plate",
+  "item.smartsuits.magnet_module": "Magnet Module",
+  "item.smartsuits.night_vision_module": "Night Vision Module",
   "item.smartsuits.smart_crystal": "Smart Crystal",
   "item.smartsuits.smart_suit_boots": "Smart Boots",
   "item.smartsuits.smart_suit_boots_plating": "Smart Boots Plating",
@@ -14,5 +18,6 @@
   "item.smartsuits.smart_suit_helmet": "Smart Helmet",
   "item.smartsuits.smart_suit_helmet_plating": "Smart Helmet Plating",
   "item.smartsuits.smart_suit_leggings": "Smart Leggings",
-  "item.smartsuits.smart_suit_leggings_plating": "Smart Leggings Plating"
+  "item.smartsuits.smart_suit_leggings_plating": "Smart Leggings Plating",
+  "itemGroup.smartsuits.items": "Smart Suits"
 }

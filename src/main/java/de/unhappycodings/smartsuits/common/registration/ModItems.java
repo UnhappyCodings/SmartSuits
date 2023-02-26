@@ -26,10 +26,10 @@ public class ModItems {
             () -> new SmartSuitArmorItem(ModArmorMaterials.SMART, EquipmentSlot.FEET,
                     new Item.Properties().tab(SmartSuits.creativeTab), 3));
 
-    public static final RegistryObject<Item> SMART_SUIT_HELMET_PLATING = Registration.ITEMS.register("smart_suit_helmet_plating", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab)));
-    public static final RegistryObject<Item> SMART_SUIT_CHESTPLATE_PLATING = Registration.ITEMS.register("smart_suit_chestplate_plating", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab)));
-    public static final RegistryObject<Item> SMART_SUIT_LEGGINGS_PLATING = Registration.ITEMS.register("smart_suit_leggings_plating", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab)));
-    public static final RegistryObject<Item> SMART_SUIT_BOOTS_PLATING = Registration.ITEMS.register("smart_suit_boots_plating", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab)));
+    public static final RegistryObject<Item> SMART_SUIT_HELMET_PLATING = Registration.ITEMS.register("smart_suit_helmet_plating", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab).stacksTo(1)));
+    public static final RegistryObject<Item> SMART_SUIT_CHESTPLATE_PLATING = Registration.ITEMS.register("smart_suit_chestplate_plating", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab).stacksTo(1)));
+    public static final RegistryObject<Item> SMART_SUIT_LEGGINGS_PLATING = Registration.ITEMS.register("smart_suit_leggings_plating", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab).stacksTo(1)));
+    public static final RegistryObject<Item> SMART_SUIT_BOOTS_PLATING = Registration.ITEMS.register("smart_suit_boots_plating", () -> new Item(new Item.Properties().tab(SmartSuits.creativeTab).stacksTo(1)));
 
     public static final RegistryObject<Item> HAMMER = Registration.ITEMS.register("hammer", HammerItem::new);
 
